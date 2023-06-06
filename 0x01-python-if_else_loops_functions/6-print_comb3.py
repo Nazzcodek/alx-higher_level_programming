@@ -6,5 +6,3 @@ for i in range(10):
 
 print("{:02d}".format(89), end='')
 print()
-            
-
