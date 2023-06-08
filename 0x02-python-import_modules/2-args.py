@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from sys import argv
-count = len(argv)- 1
+count = len(argv) - 1
 
 if __name__ == "__main__":
     if count == 0:
@@ -12,4 +12,3 @@ if __name__ == "__main__":
         print(f'{count} arguments:')
         for i in range(1, count + 1):
             print(f"{i}: {argv[i]}")
-
