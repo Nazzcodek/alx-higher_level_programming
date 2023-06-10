@@ -2,7 +2,7 @@
 #include <Python.h>
 
 /**
- * print_list_list_info - print a pyhton list
+ * print_python_list_info - print a pyhton list
  *
  * @p: list object to be printed
  *
