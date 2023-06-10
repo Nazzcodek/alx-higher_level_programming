@@ -1,9 +1,9 @@
 #!/usr/bin/pthon3
 
 def no_c(my_string):
-    str = 'cC'
+    rm_str = 'cC'
     new_str = ''
     for i in my_string:
-        if i not in str:
+        if i not in rm_str:
             new_str += i
     return new_str
