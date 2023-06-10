@@ -1,4 +1,4 @@
-#!/usr/bin/pthon3
+#!/usr/bin/python3
 
 def no_c(my_string):
     rm_str = 'cC'
