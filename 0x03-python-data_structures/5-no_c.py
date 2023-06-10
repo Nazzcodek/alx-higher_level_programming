@@ -2,6 +2,8 @@
 
 def no_c(my_string):
     str = 'cC'
-    for i in str:
-        my_string = my_string.replace(i, '')
-    return my_string
+    new_str = ''
+    for i in my_string:
+        if i not in str:
+            new_str += i
+    return new_str
