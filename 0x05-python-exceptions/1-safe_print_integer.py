@@ -1,4 +1,4 @@
-#!/usr/bash/pyhton3
+#!/usr/bin/pyhton3
 
 def safe_print_integer(value):
     try:
