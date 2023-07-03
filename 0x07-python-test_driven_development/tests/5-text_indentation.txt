@@ -1,0 +1,69 @@
+# 5-text_indentation.txt
+
+======================================
+ doctest for text_indentation() module
+======================================
+
+Usage:
+=============
+text must be a string, otherwise raise a TypeError exception
+There should be no space at the beginning or at the end of each printed line
+
+==========================================
+
+Import Module:
+	>>> text = __import__('5-text_indentation').text_indentation
+
+String:
+	>>> string = 'string'
+	>>> text(string)
+	string
+
+String with (? . :):
+	>>> string = 'Is this the end? This is just the beginning. Watch out'
+	>>> text(string)
+	Is this the end?
+	<BLANKLINE>
+	This is just the beginning.
+	<BLANKLINE>
+	Watch out
+
+no argument:
+	>>> text()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Non string argument:
+	>>> text(70)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+	>>> text(['list'])
+	Traceback (most recent call last):
+        ...
+        TypeError: text must be a string
+
+	>>> text(2.5)
+        Traceback (most recent call last):
+        ...
+        TypeError: text must be a string
+
+More than 1 arguments:
+	>>> text('string', 'another string')
+        Traceback (most recent call last):
+        ...
+        TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+
+Module docstring:
+	 >>> m = __import__("5-text_indentation").__doc__
+	 >>> len(m) > 1
+	 True
+
+Function docstring:
+	 >>> f = __import__("5-text_indentation").text_indentation.__doc__
+     	 >>> len(f) > 1
+     	 True
+
