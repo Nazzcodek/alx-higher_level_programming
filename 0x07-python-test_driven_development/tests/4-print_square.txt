@@ -1,0 +1,65 @@
+# 4-print_sqaure.txt
+
+==========================
+ doctest 4-print_square.py
+==========================
+
+Usage `print_square` function
+==================
+size is the size length of the square
+
+size must be an integer, otherwise raise a TypeError exception
+
+if size is less than 0, raise a ValueError exception
+
+if size is a float and is less than 0, raise a TypeError exception
+
+====================================================
+
+Import module:
+	>>> print_square = __import__('4-print_square').print_square
+
+Print sqaure:
+	>>> print_square(4)
+	####
+	####
+	####
+	####
+
+Argument other than integer:
+	>>> print_square(4.0)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+Zero as argument:
+	>>> print_square(0)
+	
+
+No argument:
+	>>> print_square()
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() missing 1 required positional argument: 'size'
+
+Multiple arguments:
+	>>> print_square(2, 5)
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() takes 1 positional argument but 2 were given
+
+Size less than `0`:
+	>>> print_square(-1)
+	Traceback (most recent call last):
+	...
+	ValueError: size must be >= 0
+
+Module docstring:
+	 >>> m = __import__("4-print_square").__doc__
+	 >>> len(m) > 1
+	 True
+
+Function docstring:
+	 >>> f = __import__("4-print_square").print_square.__doc__
+     >>> len(f) > 1
+     True
