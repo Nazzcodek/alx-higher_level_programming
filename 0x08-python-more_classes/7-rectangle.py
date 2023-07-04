@@ -103,9 +103,9 @@ class Rectangle:
         if width == 0 or height == 0:
             str_rec
         else:
-            s = Rectangle.print_symbol
-            str_rec = '{}{}'.format((s * width + '\n') * (height - 1),
-                                    s * width)
+            s = self.print_symbol
+            str_rec = '{}{}'.format((str(s) * width + '\n') * (height - 1),
+                                    str(s) * width)
         return str_rec
 
     def __repr__(self):
