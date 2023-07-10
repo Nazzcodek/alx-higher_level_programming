@@ -17,7 +17,7 @@ class Rectangle(BaseGeometry):
     """
 
     def __init__(self, width, height):
-        """ 
+        """
             Initialize the instance
 
             Params:
