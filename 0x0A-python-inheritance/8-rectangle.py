@@ -5,6 +5,9 @@ This is the module for Rectangle class
 """
 
 
+BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+
 class Rectangle(BaseGeometry):
     """
     This is a child class
