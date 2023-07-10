@@ -1,0 +1,47 @@
+# 1-my_list.txt
+
+======================
+Doctest for MyList object
+========================
+
+
+Usage
+==============
+Test for all element in a list
+
+======================
+
+
+Import module:
+        >>> myList = __import__("1-my_list").MyList
+
+list of values:
+        >>> lst = myList([1, 6, 8, 3, 10, 5])
+        >>> lst.print_sorted()
+        [1, 3, 5, 6, 8, 10]
+
+Pop list:
+        >>> lst.pop()
+        5
+        >>> lst.print_sorted()
+        [1, 3, 6, 8, 10]
+
+Extend to list
+        >>> lst.extend([4, 9, 1])
+        >>> lst.print_sorted()
+        [1, 1, 3, 4, 6, 8, 9, 10]
+
+Append to list
+	>>> lst.append(5)
+        >>> lst.print_sorted()
+        [1, 1, 3, 4, 5, 6, 8, 9, 10]
+
+Remove a value:
+        >>> lst.remove(1)
+        >>> lst.print_sorted()
+        [1, 3, 4, 5, 6, 8, 9, 10]
+
+Append negative value:
+        >>> lst.append(-2)
+        >>> lst.print_sorted()
+        [-2, 1, 3, 4, 5, 6, 8, 9, 10]
