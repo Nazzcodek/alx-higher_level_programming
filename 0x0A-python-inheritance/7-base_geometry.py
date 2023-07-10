@@ -12,7 +12,7 @@ class BaseGeometry:
     def area(self):
         raise Exception("area() is not implemented")
 
-    """ public instance 
+    """ public instance
         Params:
             name: name of the instance variable
             value: name value
