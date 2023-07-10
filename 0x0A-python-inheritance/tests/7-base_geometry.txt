@@ -10,12 +10,13 @@ test the value of name
 ===================
 
 Import module:
-	>>> geo = __import__.('7-base_geometry).BaseGeometry
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> geo = BaseGeometry()
 
 name as string:
 	>>> name = 'naziff'
 	>>> value = 2
-	>>> geo.integer_validtor(name, value)
+	>>> geo.integer_validator(name, value)
 	
 Area:
 	>>> geo.area()
@@ -42,7 +43,7 @@ Value is 0:
 	>>> geo.integer_validator(name, value)
 	Traceback (most recent call last):
     	...
-	ValueError: age must be greater than 0
+	ValueError: naziff must be greater than 0
 
 Value not an integer
 	name = 'naziff'
@@ -50,10 +51,10 @@ Value not an integer
 	>>> geo.integer_validator(name, value)
 	Traceback (most recent call last):
 	...
-	TypeError: age must be an integer
+	TypeError: naziff must be an integer
 
-	value = (2,)
+	>>> value = (2,)
 	>>> geo.integer_validator(name, value)
 	Traceback (most recent call last):
     	...
-	TypeError: age must be an integer
+	TypeError: naziff must be an integer
