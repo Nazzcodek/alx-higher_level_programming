@@ -9,7 +9,7 @@ class MyList(list):
     """
     This is the child class MyList
 
-    Inherit: 
+    Inherit:
         from list module
     """
     def print_sorted(self):
