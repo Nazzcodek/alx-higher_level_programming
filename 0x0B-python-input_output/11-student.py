@@ -36,8 +36,7 @@ class Student:
 
     """ Public Method"""
     def reload_from_json(self, json):
-        lst = list(self.__dict__.keys)
+        lst = list(self.__dict__.keys())
         for k, v in json.items():
             if k in lst:
                 self.__setattr__(k, v)
-
