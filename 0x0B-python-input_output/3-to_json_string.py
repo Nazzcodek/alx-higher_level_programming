@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 """
-This is the module for 4-from_json_string.py
+This is the module for 4-to_json_string.py
 """
 
 import json
 
 
-def from_json_string(my_str):
+def to_json_string(my_obj):
     """ this function get string form json"""
-    return json.dumps(my_str)
+    return json.dumps(my_obj)
