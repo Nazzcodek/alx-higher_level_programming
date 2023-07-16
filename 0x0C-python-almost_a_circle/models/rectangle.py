@@ -142,16 +142,13 @@ class Rectangle(Base):
             **kwargs: key value pair indicating which attribute
                       to update
         """
-        attribute_names = ["id", "width", "height", "x", "y"]
+        attribute_names = ('id', 'width', 'height', 'x', 'y')
 
         if args:
             for i, arg in enumerate(args):
                 if i < len(attribute_names):
                     setattr(self, attribute_names[i], arg)
-                else:
-                    break
 
-        elif kwargs:
-            for key, value in kwargs.items():
-                if key in attribute_names:
-                    setattr(self, key, value)
+        for key, value in kwargs.items():
+            if key in attribute_names:
+                setattr(self, key, value)

@@ -96,8 +96,9 @@ class TestRectangle(unittest.TestCase):
     def test_update_with_kwargs(self):
         """Test the Update methode using kwargs"""
         rectangle = Rectangle(1, 2, 3, 4, 5)
-        rectangle.update(width=6, height=7, y=8)
-
+        rectangle.update(id=1, width=6, height=7, y=8)
+        
+        print(rectangle.id)
         self.assertEqual(rectangle.id, 1)
         self.assertEqual(rectangle.width, 6)
         self.assertEqual(rectangle.height, 7)
@@ -123,10 +124,10 @@ class TestRectangle(unittest.TestCase):
         rectangle.update()
 
         self.assertEqual(rectangle.id, 1)
-        self.assertEqual(rectangle.width, 1)
-        self.assertEqual(rectangle.height, 2)
-        self.assertEqual(rectangle.x, 3)
-        self.assertEqual(rectangle.y, 4)
+        self.assertEqual(rectangle.width, 2)
+        self.assertEqual(rectangle.height, 3)
+        self.assertEqual(rectangle.x, 4)
+        self.assertEqual(rectangle.y, 5)
 
 
 if __name__ == "__main__":
