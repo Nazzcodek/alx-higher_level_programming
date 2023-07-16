@@ -83,5 +83,51 @@ class TestRectangle(unittest.TestCase):
         expected_output = "[Rectangle] (1) 5/5 - 10/20"
         self.assertEqual(str(rectangle), expected_output)
 
+    def test_update_with_args(self):
+        """Test the update method."""
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        rectangle.update(6, 7, 8, 9, 10)
+        self.assertEqual(rectangle.id, 6)
+        self.assertEqual(rectangle.width, 7)
+        self.assertEqual(rectangle.height, 8)
+        self.assertEqual(rectangle.x, 9)
+        self.assertEqual(rectangle.y, 10)
+
+    def test_update_with_kwargs(self):
+        """Test the Update methode using kwargs"""
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        rectangle.update(width=6, height=7, y=8)
+
+        self.assertEqual(rectangle.id, 1)
+        self.assertEqual(rectangle.width, 6)
+        self.assertEqual(rectangle.height, 7)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 8)
+
+    def test_update_with_args_and_kwargs(self):
+        """Test the Update method using both args and kwargs"""
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        rectangle.update(6, 7, y=8)
+
+        self.assertEqual(rectangle.id, 6)
+        self.assertEqual(rectangle.width, 7)
+        self.assertEqual(rectangle.height, 2)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 8)
+
+    def test_update_with_no_args_or_kwargs(self):
+        """
+        Test the Update method with no args or kwargs
+        """
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        rectangle.update()
+
+        self.assertEqual(rectangle.id, 1)
+        self.assertEqual(rectangle.width, 1)
+        self.assertEqual(rectangle.height, 2)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 4)
+
+
 if __name__ == "__main__":
     unittest.main()

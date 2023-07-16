@@ -100,6 +100,10 @@ class Rectangle(Base):
 
     """Public Method Area"""
     def area(self):
+        """
+        This method calculate the area of the rectangle
+        using the width and height instance
+        """
         width = self.__width
         height = self.__height
         area = width * height
@@ -107,11 +111,15 @@ class Rectangle(Base):
 
     """Public Method Display"""
     def display(self):
+        """
+        Display the rectangle using '#'
+        """
         width = self.__width
         height = self.__height
-        for i in range(height - 1):
-            print('#' * width)
-        print('#' * width)
+        for i in range(self.__y):
+            print()
+        for i in range(height):
+            print(' ' * self.__x + '#' * width)
 
     def __str__(self):
         """Return the string representation of the Rectangle."""
@@ -121,3 +129,29 @@ class Rectangle(Base):
         x = self.__x
         y = self.__y
         return f"""[Rectangle] ({d}) {x}/{y} - {w}/{h}"""
+
+    """Public method Update"""
+    def update(self, *args, **kwargs):
+        """
+        Updates the instance attributes of the Rectangle class.
+        Args:
+            *args: Variable-length argument list 
+                   containing the values to update the attributes.
+                   The order of the arguments should be: 
+                   id, width, height, x, y.
+            **kwargs: key value pair indicating which attribute
+                      to update
+        """
+        attribute_names = ["id", "width", "height", "x", "y"]
+
+        if args:
+            for i, arg in enumerate(args):
+                if i < len(attribute_names):
+                    setattr(self, attribute_names[i], arg)
+                else:
+                    break
+
+        elif kwargs:
+            for key, value in kwargs.items():
+                if key in attribute_names:
+                    setattr(self, key, value)
