@@ -135,9 +135,9 @@ class Rectangle(Base):
         """
         Updates the instance attributes of the Rectangle class.
         Args:
-            *args: Variable-length argument list 
+            *args: Variable-length argument list
                    containing the values to update the attributes.
-                   The order of the arguments should be: 
+                   The order of the arguments should be:
                    id, width, height, x, y.
             **kwargs: key value pair indicating which attribute
                       to update
