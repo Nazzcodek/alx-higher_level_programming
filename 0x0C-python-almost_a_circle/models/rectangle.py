@@ -91,11 +91,11 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """
-        Set the cordinate y for the rectangle
+        Setter method for y attribute
         Params:
-            value (int/float): y can only be positive or 0
+            value (int): The new value for y
         """
-        Rectangle.value_validator('y', value)
+        Rectangle.value_validator("y", value)
         self.__y = value
 
     """Public Method Area"""
@@ -104,3 +104,20 @@ class Rectangle(Base):
         height = self.__height
         area = width * height
         return area
+
+    """Public Method Display"""
+    def display(self):
+        width = self.__width
+        height = self.__height
+        for i in range(height - 1):
+            print('#' * width)
+        print('#' * width)
+
+    def __str__(self):
+        """Return the string representation of the Rectangle."""
+        w = self.__width
+        h = self.__height
+        d = self.id
+        x = self.__x
+        y = self.__y
+        return f"""[Rectangle] ({d}) {x}/{y} - {w}/{h}"""
