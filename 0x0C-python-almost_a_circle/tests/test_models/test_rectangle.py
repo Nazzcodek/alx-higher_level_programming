@@ -1,6 +1,8 @@
 #!/sur/bin/python
 
 import unittest
+import sys
+import io
 
 from models.rectangle import Rectangle
 
@@ -37,8 +39,8 @@ class TestRectangle(unittest.TestCase):
     def test_y_setter(self):
         """Test the y setter."""
         rectangle = Rectangle(10, 20, 0, 0)
-        rectangle.y = -50
-        self.assertEqual(rectangle.y, -50)
+        rectangle.y = 50
+        self.assertEqual(rectangle.y, 50)
 
     def test_value_validator(self):
         """Test the value_validator function."""
@@ -56,7 +58,30 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle.value_validator("y", -10)
+    
+    def test_display(self):
+        """ Test display method"""
+        rect = Rectangle(4, 6)
+        expected_output = '####\n####\n####\n####\n####\n####\n'
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        # Get the captured output and reset the standard output
+        output = captured_output.getvalue()
+        sys.stdout = sys.__stdout__
+        # Print the expected and captured output for visual comparison
+        print("Expected Output:")
+        print(expected_output)
+        print("Captured Output:")
+        print(output)
+        # Compare the expected and captured output visually
+        self.assertEqual(expected_output, output)
 
+    def test_str(self):
+        """Test the __str__ method."""
+        rectangle = Rectangle(10, 20, 5, 5, 1)
+        expected_output = "[Rectangle] (1) 5/5 - 10/20"
+        self.assertEqual(str(rectangle), expected_output)
 
 if __name__ == "__main__":
     unittest.main()
