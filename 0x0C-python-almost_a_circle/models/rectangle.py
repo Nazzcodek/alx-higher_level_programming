@@ -67,7 +67,7 @@ class Rectangle(Base):
         """
         Rectangle.value_validator('height', value)
         self.__height = value
-    
+
     @property
     def x(self):
         """ get the cordinate x"""
@@ -82,7 +82,7 @@ class Rectangle(Base):
         """
         Rectangle.value_validator('x', value)
         self.__x = value
-    
+
     @property
     def y(self):
         """ get the cordinate y"""
@@ -97,3 +97,10 @@ class Rectangle(Base):
         """
         Rectangle.value_validator('y', value)
         self.__y = value
+
+    """Public Method Area"""
+    def area(self):
+        width = self.__width
+        height = self.__height
+        area = width * height
+        return area
