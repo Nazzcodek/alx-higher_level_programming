@@ -17,6 +17,23 @@ class TestSquare(unittest.TestCase):
         square = Square(5, 2, 3, 1)
         self.assertEqual(str(square), "[Square] (1) 2/3 - 5/5")
 
+    def test_get_size(self):
+        """
+        Test the size property to get the size of the square.
+        """
+        square = Square(5)
+        self.assertEqual(square.size, 5)
+
+    def test_set_size(self):
+        """
+        Test the size property to set the size of the square.
+        """
+        square = Square(5)
+        square.size = 7
+        self.assertEqual(square.size, 7)
+        self.assertEqual(square.width, 7)
+        self.assertEqual(square.height, 7)
+
     def test_update_id(self):
         """
         Test the update method of the Square with the id argument.

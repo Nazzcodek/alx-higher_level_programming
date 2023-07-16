@@ -30,3 +30,17 @@ class Square(Rectangle):
         y = self.y
         d = self.id
         return f"[Square] ({d}) {x}/{y} - {s1}/{s2}"
+
+    @property
+    def size(self):
+        """Get the size of the square"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """Set the value of size using
+            width and height of rectangle class
+            and equate them to a value:
+        """
+        self.width = value
+        self.height = value
