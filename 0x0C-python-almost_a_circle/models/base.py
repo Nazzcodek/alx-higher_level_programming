@@ -5,6 +5,9 @@ This is the module for base.py
 """
 
 import json
+import csv
+
+from csv import DictReader
 
 
 class Base:
@@ -50,7 +53,8 @@ class Base:
         if list_dictionaries is None:
             return '[]'
         else:
-            return json.dumps(list_dictionaries)
+            json_list = [obj.to_dictionary() for obj in list_dictionaries]
+            return json.dumps(json_list)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -120,3 +124,36 @@ class Base:
                 return instance
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Save the CSV representation of list_objs to a file
+        """
+        filename = cls.__name__ + ".csv"
+
+        if cls.__name__ == 'Rectangle':
+            columns = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == 'Square':
+            columns = ['id', 'size', 'x', 'y']
+
+        with open(filename, 'w') as f:
+            writer = csv.DictWriter(f, fieldnames=columns)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Load instances from a CSV file
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename) as f:
+                dict_reader = DictReader(f)
+                list_of_dict = list(dict_reader)
+            return list_of_dict
+
+        except FileNotFoundError:
+            return []    
