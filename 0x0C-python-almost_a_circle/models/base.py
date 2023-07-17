@@ -4,6 +4,8 @@
 This is the module for base.py
 """
 
+import json
+
 
 class Base:
     """this is the Base object"""
@@ -39,3 +41,82 @@ class Base:
         set id value
         """
         self.__id = value
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        JSON string representation of list_dictionaries
+        """
+        if list_dictionaries is None:
+            return '[]'
+        else:
+            return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        the JSON string representation of list_objs to a file
+        params:
+            cls:
+            list_objs: list of object to save as json string list
+        """
+        file_json = cls.__name__ + ".json"
+        new_json_string = '[]'
+
+        if list_objs is None:
+            return new_json_string
+        else:
+            new_json_string = cls.to_json_string(
+                    [obj.to_dictionary() for obj in list_objs])
+            with open(file_json, 'w') as file:
+                file.write(new_json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Returns the list of the JSON string representation json_string
+        Params:
+            json_string: json string to json string representation
+        """
+        if json_string is None or len(json_string) == 0:
+            return '[]'
+        else:
+            return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        This method create an instance with all attributes already set
+        Params:
+            **dictionary: kwargs for dictionary to set for the instance
+        Returns:
+            Base: The created instance with attributes set
+        """
+        # create a dummy Rectangle instance
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        # create a dummy square instance
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            dummy = None
+
+        # set real value using update method
+        if dummy is not None:
+            dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Create list of instances
+        """
+        filename = cls.__name__ + '.json'
+        try:
+            with open(filename) as f:
+                content = f.read()
+                dics = cls.from_json_string(content)
+                instance = [cls.create(**dic) for dic in dics]
+                return instance
+        except FileNotFoundError:
+            return []

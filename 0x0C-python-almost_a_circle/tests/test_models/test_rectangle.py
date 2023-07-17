@@ -58,7 +58,7 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle.value_validator("y", -10)
-    
+
     def test_display(self):
         """ Test display method"""
         rect = Rectangle(4, 6)
@@ -97,7 +97,7 @@ class TestRectangle(unittest.TestCase):
         """Test the Update methode using kwargs"""
         rectangle = Rectangle(1, 2, 3, 4, 5)
         rectangle.update(id=1, width=6, height=7, y=8)
-        
+
         print(rectangle.id)
         self.assertEqual(rectangle.id, 1)
         self.assertEqual(rectangle.width, 6)
