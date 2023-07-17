@@ -152,3 +152,17 @@ class Rectangle(Base):
         for key, value in kwargs.items():
             if key in attribute_names:
                 setattr(self, key, value)
+
+    """public method """
+    def to_dictionary(self):
+        """
+        this method return a dictionary of the rectangle
+        """
+        dic = {
+                'x': self.__x,
+                'y': self.__y,
+                'id': self.id,
+                'height': self.__height,
+                'width': self.__width
+                }
+        return dic

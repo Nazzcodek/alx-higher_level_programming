@@ -25,11 +25,10 @@ class Square(Rectangle):
     def __str__(self):
         """String reprsentation of square"""
         s1 = self.width
-        s2 = self.height
         x = self.x
         y = self.y
         d = self.id
-        return f"[Square] ({d}) {x}/{y} - {s1}/{s2}"
+        return f"[Square] ({d}) {x}/{y} - {s1}"
 
     @property
     def size(self):
@@ -67,3 +66,16 @@ class Square(Rectangle):
         for key, value in kwargs.items():
             if key in attribute_names:
                 setattr(self, key, value)
+
+    """public method """
+    def to_dictionary(self):
+        """
+        this method return a dictionary of the square
+        """
+        dic = {
+                'x': self.x,
+                'y': self.y,
+                'id': self.id,
+                'size': self.width
+                }
+        return dic

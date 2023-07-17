@@ -15,7 +15,7 @@ class TestSquare(unittest.TestCase):
         Test the string representation of the Square.
         """
         square = Square(5, 2, 3, 1)
-        self.assertEqual(str(square), "[Square] (1) 2/3 - 5/5")
+        self.assertEqual(str(square), "[Square] (1) 2/3 - 5")
 
     def test_get_size(self):
         """
@@ -75,6 +75,14 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square.id, 10)
         self.assertEqual(square.height, 7)
         self.assertEqual(square.y, 9)
+
+    def test_to_dictionary(self):
+        """
+        Test the to_dictionary method to return a dictionary of the square.
+        """
+        square = Square(10, 2, 1)
+        expected_dict = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertEqual(square.to_dictionary(), expected_dict)
 
 
 if __name__ == '__main__':
