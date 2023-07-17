@@ -1,8 +1,17 @@
 #!/usr/bin/python3
 
+"""
+This is the unittest  module for Base class
+"""
+
 import unittest
 
+import json
+import os
+
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -33,10 +42,10 @@ class TestBase(unittest.TestCase):
 
         # Test with list of dictionaries
         rectangles = [Rectangle(1, 2), Rectangle(3, 4)]
-        expected_json = '[
+        expected_json = '''[
             {"id": 1, "width": 1, "height": 2, "x": 0, "y": 0},
             {"id": 2, "width": 3, "height": 4, "x": 0, "y": 0}
-        ]'
+        ]'''
         self.assertEqual(Base.to_json_string(rectangles), expected_json)
 
     def test_save_to_file(self):
@@ -56,10 +65,10 @@ class TestBase(unittest.TestCase):
         self.assertTrue(os.path.exists("Base.json"))
         with open("Base.json", "r") as file:
             content = file.read()
-        expected_json = '[
+        expected_json = '''[
             {"id": 1, "width": 1, "height": 2, "x": 0, "y": 0},
             {"id": 2, "width": 3, "height": 4, "x": 0, "y": 0}
-        ]'
+        ]'''
         self.assertEqual(content, expected_json)
         os.remove("Base.json")
 
@@ -70,10 +79,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.from_json_string(empty_json), [])
 
         # Test with non-empty JSON string
-        json_string = '[
+        json_string = '''[
             {"id": 1, "width": 1, "height": 2, "x": 0, "y": 0},
             {"id": 2, "width": 3, "height": 4, "x": 0, "y": 0}
-        ]'
+        ]'''
         expected_list = [
             {"id": 1, "width": 1, "height": 2, "x": 0, "y": 0},
             {"id": 2, "width": 3, "height": 4, "x": 0, "y": 0}
@@ -116,7 +125,63 @@ class TestBase(unittest.TestCase):
         self.assertEqual(loaded_rectangles[1].y, rectangle2.y)
 
         os.remove("Rectangle.json")
+    
+    def setUp(self):
+        """Setting up the test for csv"""
+        # Clear any existing CSV files
+        self.remove_csv_files()
 
+        # Create test instances
+        self.rectangles = [
+            Rectangle(1, 2, 3, 4, 5),
+            Rectangle(6, 7, 8, 9, 10)
+        ]
+        self.squares = [
+            Square(11, 12, 13, 14),
+            Square(15, 16, 17, 18)
+        ]
+
+    def tearDown(self):
+        """Tear down csv file"""
+        # Remove created CSV files
+        self.remove_csv_files()
+
+    @staticmethod
+    def remove_csv_files():
+        """remove csv file"""
+        # Remove any existing CSV files
+        if os.path.exists("Rectangle.csv"):
+            os.remove("Rectangle.csv")
+        if os.path.exists("Square.csv"):
+            os.remove("Square.csv")
+
+    def test_save_to_file_csv(self):
+        """Test save to CSV file"""
+        # Save rectangles to file
+        Rectangle.save_to_file_csv(self.rectangles)
+        # Check if the file exists
+        self.assertTrue(os.path.exists("Rectangle.csv"))
+
+        # Save squares to file
+        Square.save_to_file_csv(self.squares)
+        # Check if the file exists
+        self.assertTrue(os.path.exists("Square.csv"))
+
+    def test_load_from_file_csv(self):
+        """ Test load CSV file """
+        # Save rectangles to file
+        Rectangle.save_to_file_csv(self.rectangles)
+        # Load rectangles from file
+        loaded_rectangles = Rectangle.load_from_file_csv()
+        # Check if the loaded rectangles match the original rectangles
+        self.assertEqual(loaded_rectangles, self.rectangles)
+
+        # Save squares to file
+        Square.save_to_file_csv(self.squares)
+        # Load squares from file
+        loaded_squares = Square.load_from_file_csv()
+        # Check if the loaded squares match the original squares
+        self.assertEqual(loaded_squares, self.squares)
 
 if __name__ == "__main__":
     unittest.main()
