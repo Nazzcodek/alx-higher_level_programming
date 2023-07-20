@@ -125,7 +125,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(loaded_rectangles[1].y, rectangle2.y)
 
         os.remove("Rectangle.json")
-    
+
     def setUp(self):
         """Setting up the test for csv"""
         # Clear any existing CSV files
@@ -182,6 +182,7 @@ class TestBase(unittest.TestCase):
         loaded_squares = Square.load_from_file_csv()
         # Check if the loaded squares match the original squares
         self.assertEqual(loaded_squares, self.squares)
+
 
 if __name__ == "__main__":
     unittest.main()
