@@ -1,2 +1,2 @@
 -- show the full description of a table
-show create table first_table
+SHOW CREATE TABLE first_table
