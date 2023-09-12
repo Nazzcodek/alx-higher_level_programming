@@ -7,5 +7,5 @@ if (arg && value) {
     console.log('X'.repeat(arg));
   }
 } else {
-  console.log('Not a number');
+  console.log('Missing size');
 }
