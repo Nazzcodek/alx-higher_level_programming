@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# a script that lists all states with a name starting with N
+# script should take 3 arguments: mysql username, mysql password database name
 
 import sys
 import MySQLdb
