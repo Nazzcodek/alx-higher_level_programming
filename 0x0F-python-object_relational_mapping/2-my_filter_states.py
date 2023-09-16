@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-# displays states table of hbtn_0e_0_usa where name matches the argument.
-# 4 arguments: \
-#     mysql username, mysql password, database name, state name searched
+"""
+displays states table of hbtn_0e_0_usa where name matches the argument.
+4 arguments:
+     mysql username,
+     mysql password,
+     database name,
+     state name searched
+"""
 
 import sys
 import MySQLdb
