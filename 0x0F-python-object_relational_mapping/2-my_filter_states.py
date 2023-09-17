@@ -18,4 +18,6 @@ if __name__ == "__main__":
                     FROM `states` \
                     WHERE `name` = '{}' \
                     ORDER BY `id`".format(sys.argv[4]))
-    [print(state) for state in cursor.fetchall()]
+    states = cursor.fetchall()
+    for state in states:
+        print(state)
