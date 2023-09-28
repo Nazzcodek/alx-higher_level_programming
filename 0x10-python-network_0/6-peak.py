@@ -2,7 +2,15 @@
 """
 this is function defination file 6-peak.py
 """
+
+
 def find_peak(list_of_integers):
+    """
+    Method that find the peak of a list
+    Param:
+        list_of_integers
+    Return: peak of list
+    """
     size = len(list_of_integers)
 
     if size == 0:
