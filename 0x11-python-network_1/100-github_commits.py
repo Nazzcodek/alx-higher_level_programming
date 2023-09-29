@@ -17,6 +17,6 @@ if __name__ == '__main__':
         for i in range(10):
             sha = commits[i].get('sha')
             author = commits[i].get('commit').get('author').get('name')
-            print(f"{sha}, {author}")
+            print(f"{sha}: {author}")
     except Exception as e:
         pass
